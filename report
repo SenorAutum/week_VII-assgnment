@@ -4,3 +4,23 @@ Interpretation: This suggests the model is structurally biased toward over-polic
 Remediation: To fix this, we recommend:
 1.	Threshold Tuning: Adjusting the classification threshold for different groups to equalize FPR (e.g., requiring a higher probability score to flag a Black defendant as high risk).
 2.	Algorithm Selection: Moving away from simple linear models to fairness-aware algorithms (like Adversarial Debiasing) available in IBM's AI Fairness 360 toolkit.
+📊 Key Findings (Audit Results)
+Upon running the audit, we analyzed the False Positive Rate (FPR)—the likelihood of an innocent person being wrongly classified as "High Risk."
+
+African-American Defendants: High FPR (System is prone to over-flagging).
+
+Caucasian Defendants: Low FPR (System is prone to under-flagging).
+
+Conclusion: The model violates the principle of Equal Opportunity. African-American defendants who did not re-offend were significantly more likely to be mislabeled as high risk compared to their white counterparts, indicating structural bias in the training data (likely due to over-policing in historical datasets).
+
+🧠 Ethical Reflection
+This project highlights that "accuracy" is not the only metric that matters. A model can be 70% accurate overall but still be discriminatory if its errors are concentrated on a specific marginalized group. As AI developers, we must audit for Fairness and Disparate Impact before deployment.
+
+🔗 References
+Dataset: ProPublica COMPAS Analysis
+
+Toolkit: IBM AI Fairness 360
+
+Guidelines: EU Ethics Guidelines for Trustworthy AI
+
+Created by [Your Name] for the PLP Academy AI Ethics Assignment.
