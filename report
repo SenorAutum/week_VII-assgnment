@@ -1,0 +1,6 @@
+Short Report to include with code (300 words)
+Audit Findings: Our technical audit of the COMPAS dataset reveals a significant breach of the "Equal Opportunity" fairness metric. The Logistic Regression model, serving as a proxy for the COMPAS algorithm, demonstrated a much higher False Positive Rate (FPR) for African-American defendants compared to Caucasians. Specifically, African-American defendants who did not re-offend were nearly twice as likely to be flagged as "High Risk" compared to their Caucasian counterparts.
+Interpretation: This suggests the model is structurally biased toward over-policing Black defendants while giving White defendants the "benefit of the doubt" (higher False Negative Rate). This bias likely stems from the input feature priors_count, which reflects historical arrest rates rather than actual crime commission rates.
+Remediation: To fix this, we recommend:
+1.	Threshold Tuning: Adjusting the classification threshold for different groups to equalize FPR (e.g., requiring a higher probability score to flag a Black defendant as high risk).
+2.	Algorithm Selection: Moving away from simple linear models to fairness-aware algorithms (like Adversarial Debiasing) available in IBM's AI Fairness 360 toolkit.
